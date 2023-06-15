@@ -3,8 +3,13 @@ class iOS15_kancolle {
     if (typeof gadgetInfo === undefined) return alert("艦これのゲームページで実行してください");
     window.open("http:" + gadgetInfo.URL, '_blank');
 
-    // opensupportメソッドを実行
-    this.opensupport(document);
+    // XPathで要素を取得
+    var htmlWrap = document.evaluate('/html/body/div[@id="htmlWrap"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    console.log(htmlWrap)
+    if (htmlWrap) {
+      // 要素に縮小スタイルを適用
+      htmlWrap.style.transform = 'scale(0.83)';
+    }
   }
 
   opensupport(document) {
@@ -13,12 +18,7 @@ class iOS15_kancolle {
     s.href = 'https://iOS15-kancolle.github.io/iframe.css';
     document.body.appendChild(s);
 
-    // XPathで要素を取得
-    var htmlWrap = document.evaluate('/html/body/div[@id="htmlWrap"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (htmlWrap) {
-      // 要素に縮小スタイルを適用
-      htmlWrap.style.transform = 'scale(0.83)';
-    }
+
 
     s = document.createElement('iframe');
     s.src = 'https://zekamashi.net/';
