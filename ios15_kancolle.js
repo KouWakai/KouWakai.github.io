@@ -1,5 +1,6 @@
 class iOS15_kancolle {
   open() {
+    console.log('test')
     if (typeof gadgetInfo === undefined) return alert("艦これのゲームページで実行してください");
     window.open("http:" + gadgetInfo.URL, '_blank');
 
