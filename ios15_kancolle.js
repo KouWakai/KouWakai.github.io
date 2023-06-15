@@ -1,6 +1,6 @@
 class iOS15_kancolle {
   open(){
-    if(typeof gadgetInfo === undefined) return alert("艦これのゲームページで実行してください");
+    if(typeof gadgetInfo === undefined) return alart("艦これのゲームページで実行してください");
     window.open("http:"+gadgetInfo.URL,'_blank');
   }
   opensupport(document){
@@ -8,6 +8,14 @@ class iOS15_kancolle {
     s.rel='stylesheet';
     s.href='https://iOS15-kancolle.github.io/iframe.css';
     document.body.appendChild(s);
+
+    // XPathで要素を取得
+    var canvas = document.evaluate('/html/body/canvas', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (canvas) {
+      // 要素を縮小
+      canvas.style.transform = 'scale(0.5)';
+    }
+
     s=document.createElement('iframe');
     s.src='https://zekamashi.net/';
     s.width='48%';
@@ -29,32 +37,6 @@ class iOS15_kancolle {
     s.height='100%';
     document.body.appendChild(s);
   }
-};
+}
 
 window.iOS15_kancolle = iOS15_kancolle;
-
-// iPhone 11の画面に縦横が綺麗に収まるように調整
-const deviceWidth = 375; // iPhone 11の横幅
-const deviceHeight = 812; // iPhone 11の縦幅
-
-const iframeWidth = '48%';
-const iframeHeight = '100%';
-
-const scaleFactor = Math.min(
-  deviceWidth / (deviceHeight * 0.48),
-  deviceHeight / (deviceWidth * 0.96)
-);
-
-const adjustedIframeWidth = `${parseFloat(iframeWidth) * scaleFactor}%`;
-const adjustedIframeHeight = `${parseFloat(iframeHeight) * scaleFactor}%`;
-
-document.addEventListener('DOMContentLoaded', function() {
-  const app = new iOS15_kancolle();
-  app.opensupport(document);
-
-  const iframes = document.querySelectorAll('iframe');
-  iframes.forEach(iframe => {
-    iframe.width = adjustedIframeWidth;
-    iframe.height = adjustedIframeHeight;
-  });
-});
