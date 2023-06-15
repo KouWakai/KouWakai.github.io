@@ -5,7 +5,7 @@ class iOS15_kancolle {
       return;
     }
 
-    var newWindow = window.open("http:" + gadgetInfo.URL, '_blank');
+    var newWindow = window.onload("http:" + gadgetInfo.URL, '_blank');
 
     newWindow.addEventListener('load', function() {
       var htmlWrap = newWindow.document.evaluate('/html/body/div[@id="htmlWrap"]', newWindow.document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
