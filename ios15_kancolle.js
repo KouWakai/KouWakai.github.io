@@ -10,10 +10,10 @@ class iOS15_kancolle {
     document.body.appendChild(s);
 
     // XPathで要素を取得
-    var canvas = document.evaluate('/html/body/canvas', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (canvas) {
-      // 要素を縮小
-      canvas.style.transform = 'scale(0.5)';
+    var htmlWrap = document.evaluate('/html/body/div[@id="htmlWrap"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (htmlWrap) {
+      // 要素に縮小スタイルを適用
+      htmlWrap.style.transform = 'scale(0.83)';
     }
 
     s=document.createElement('iframe');
