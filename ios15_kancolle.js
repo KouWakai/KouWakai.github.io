@@ -1,17 +1,7 @@
 class iOS15_kancolle {
   open() {
-    console.log('test')
     if (typeof gadgetInfo === undefined) return alert("艦これのゲームページで実行してください");
     window.open("http:" + gadgetInfo.URL, '_blank');
-
-    // XPathで要素を取得
-    var htmlWrap = document.evaluate('/html/body/div[@id="htmlWrap"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    console.log(htmlWrap)
-    if (htmlWrap) {
-      // 要素に縮小スタイルを適用
-      htmlWrap.style.transform = 'scale(0.83)';
-    }
-  }
 
   opensupport(document) {
     var s = document.createElement('link');
